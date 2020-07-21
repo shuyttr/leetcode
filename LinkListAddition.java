@@ -9,27 +9,38 @@
  * }
  */
 class Solution {
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        int multiplier = 0;
-        int sum = 0;
-        while(l1 != null){
-            sum += l1.val * Math.pow(10, multiplier++);
-            l1 = l1.next;
-        }
-        multiplier = 0;
-        while(l2 != null){
-            sum += l2.val * Math.pow(10, multiplier++);
-            l2 = l2.next;
-        }
-        ListNode result = new ListNode(sum % 10);
-        ListNode head = result;
-        sum /= 10;
-        while(sum / 10 != 0 || sum > 0){
-            int value = sum % 10;
-            result.next = new ListNode(value);
-            result = result.next;
-            sum = sum / 10;
-        }
-        return head;
-    }
+      public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+            int multiplier = 0;
+            int sum = 0;
+      
+            ListNode resultLinkedList = new ListNode();
+            ListNode headResult = resultLinkedList;
+            ListNode currentL1 = l1;
+            ListNode currentL2 = l2;
+
+            int carryOver = 0;
+
+            while (currentL1 != null || currentL2 != null){
+                  //if list ends that append 0 to the addition
+                  if (currentL1 == null){
+                        x = 0;
+                  } else{
+                        x = currentL1.val;
+                  }
+
+                  if(currentL2 == null){
+                        y = 0;
+                  } else{
+                        x = currentL2.val;
+                  }
+
+                  int newValue = (x + y) % 10;
+                  resultLinkedList.val = newValue + carryOver;
+                  resultLinkedList = resultLinkedList.next;
+                  carryOver = (x + y) / 10;
+                  currentL1 = currentL1.next;
+                  currentL2 = currentL2.next;
+            }
+
+      }
 }
