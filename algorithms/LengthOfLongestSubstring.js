@@ -2,6 +2,11 @@
  * @param {string} s
  * @return {number}
  */
+
+/* Sliding Window: Use a Set to place all the visited letters,
+ * then check while moving "left" if the hovered letter is in the set calling Set.has(element)
+ * and increase count until Set.has(element) returns true and then move the "left" pointer right
+ */
 var lengthOfLongestSubstring = function(s) {
     let set = new Set();
     let i = 0, j = 0, max = 0;
