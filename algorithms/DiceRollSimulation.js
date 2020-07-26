@@ -13,10 +13,10 @@ function complete(n, rollMax, sum){
         }
         return count;
     }
-    for(i = 0; i < rollMax.length; i++){
-        if(rollMax[i] > 0){
+    for(j = 0; j < rollMax.length; j++){
+        if(rollMax[j] > 0){
             var arr = rollMax.map((x) => x);
-            arr[i]--;
+            arr[j]--;
             sum += complete(n-1, arr);
         }
     }
@@ -25,4 +25,5 @@ function complete(n, rollMax, sum){
 
 var dieSimulator = function(n, rollMax) {
     var roll = complete(n, rollMax, 0);
+    return roll % (Math.pow(10, 9) + 7);
 };
