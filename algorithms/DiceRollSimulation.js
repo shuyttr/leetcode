@@ -16,8 +16,9 @@ function complete(n, rollMax, consecutive) {
         }
         return count;
     }
+    var j;
     for (j = 0; j < copy.length; j++) {
-        if (copy[j] > 0) {
+        if (rollMax[j] > 0) {
             var arr = copy.map((x) => x);
             sum += complete(n - 1, arr, j);
         }
